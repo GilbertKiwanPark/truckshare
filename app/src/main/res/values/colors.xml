@@ -3,4 +3,24 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="mainTab">#eefba8</color>
+    <color name="mainTab_disable">#77eefba8</color>
+
+    <color name="subColor1">#Ff80a1</color>
+    <color name="subColor2">#5395de</color>
+    <color name="subColor3">#A8B3CD</color>
+    <color name="subColor4">#888888</color>
+
+    <color name="mainGray">#e5e5e5</color>
+
+    <!-- Retrieved via Resources.getDrawable() and friends. -->
+    <drawable name="black_color">#ff000000</drawable>
+    <drawable name="selected_list_color">#ff32A800</drawable>
+    <drawable name="default_list_color">#ffffffff</drawable>
+
+    <color name="fabPrimary">#45A1F5</color>
+    <color name="fabPressed">#6EB5F7</color>
+    <color name="fabRipple">#AED6FC</color>
+
 </resources>

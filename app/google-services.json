@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "57520660654",
+    "firebase_url": "https://wheels-7fa40.firebaseio.com",
+    "project_id": "wheels-7fa40",
+    "storage_bucket": "wheels-7fa40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57520660654:android:e424de767a3b2083",
+        "android_client_info": {
+          "package_name": "com.example.gilbertpark.fourwheels"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57520660654-016a69qoe0ual1a3k3gc0t7sv9t0fnas.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "57520660654-016a69qoe0ual1a3k3gc0t7sv9t0fnas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8ddb_6um2heqcV8EjXqk3ps0XsVf1UnY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
