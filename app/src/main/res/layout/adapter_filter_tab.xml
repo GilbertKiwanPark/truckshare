@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/filter_tab_root"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="vertical"
+    android:background="@drawable/buttons_deselect">
+
+    <TextView
+        android:id="@+id/filter_tab_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:gravity="center"
+        android:layout_margin="1dp"/>
+
+</LinearLayout>

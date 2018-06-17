@@ -25,25 +25,30 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoadingActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
-        <activity
-            android:name=".MapViewer"
-            android:configChanges="keyboardHidden|orientation">
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MapViewer"
+            android:configChanges="keyboardHidden|orientation"></activity>
         <activity android:name=".HistoryActivity" />
+        <activity
+            android:name=".FilterActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".CsActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".FacebookJoinActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".ReservationActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".ReservationActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
     </application>
 
 </manifest>

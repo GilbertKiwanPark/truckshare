@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.gilbertpark.fourwheels.FilterActivity;
 import com.example.gilbertpark.fourwheels.R;
 import com.squareup.picasso.Picasso;
 
@@ -17,28 +18,35 @@ import Data.CarData;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MypageCarAdpater extends RecyclerView.Adapter<MypageCarAdpater.ViewHolder> {
+public class FilterCarAdpater extends RecyclerView.Adapter<FilterCarAdpater.ViewHolder> {
 
     Context context;
     ArrayList<CarData> datas;
+    ArrayList<String> parentList = new ArrayList<>();
 
-    public MypageCarAdpater(Context context, ArrayList<CarData> datas) {
+    public FilterCarAdpater(Context context, ArrayList<CarData> datas) {
         this.context = context;
         this.datas = datas;
+        parentList = ((FilterActivity) context).setList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.mypage_car_adapter, parent, false);
+                .inflate(R.layout.adapter_filter_car, parent, false);
         ViewHolder holder = new ViewHolder(v);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MypageCarAdpater.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FilterCarAdpater.ViewHolder holder, int position) {
         final CarData data = datas.get(position);
-        Picasso.get().load(data.getImg_url()).into(holder.carImage);
+
+        if(parentList.contains(data.getCapacity()) && parentList.contains(data.getCar_type())) {
+            Picasso.get().load(data.getImg_url()).into(holder.carImage);
+        } else {
+            holder.carImage.setImageResource(0);
+        }
     }
 
     @Override

@@ -33,6 +33,7 @@
         ></ImageView>
 
     <ImageView
+        android:id="@+id/btn_booking"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/button_booking_now"

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapter.MypageCarAdpater;
+import Adapter.FilterCarAdpater;
 import Data.CarData;
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -75,7 +75,7 @@ public class MyPageActivity extends AppCompatActivity {
     ImageView ivGotoCs;
 
     ArrayList<CarData> carDatas = new ArrayList<>();
-    MypageCarAdpater adapter;
+    FilterCarAdpater adapter;
 
     @OnClick({R.id.menu_iv_1, R.id.menu_iv_2, R.id.menu_iv_3, R.id.menu_iv_4})
     public void OnClickMenu(View v) {
@@ -119,7 +119,7 @@ public class MyPageActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager lm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         rv.setLayoutManager(lm);
-        adapter = new MypageCarAdpater(this, carDatas);
+        adapter = new FilterCarAdpater(this, carDatas);
         rv.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

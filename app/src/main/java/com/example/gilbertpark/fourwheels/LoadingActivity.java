@@ -2,6 +2,7 @@ package com.example.gilbertpark.fourwheels;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -159,6 +160,10 @@ public class LoadingActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             loadingdialog.dismiss();
+            Toast.makeText(LoadingActivity.this, "로그인을 환영합니다", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoadingActivity.this, MapViewer.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

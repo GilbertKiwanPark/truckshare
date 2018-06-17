@@ -8,11 +8,17 @@ public class CarData {
     double location_lat;
     double location_lng;
     long price;
-    double capacity;
+    String capacity;
     String model_year;
     String img_url;
 
 
+    public CarData(String car_name, String capacity, String car_type, String img_url) {
+        this.car_name = car_name;
+        this.capacity = capacity;
+        this.car_type = car_type;
+        this.img_url = img_url;
+    }
     public CarData(String img_url) {
         this.img_url = img_url;
     }
@@ -73,11 +79,11 @@ public class CarData {
         this.price = price;
     }
 
-    public double getCapacity() {
+    public String getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(double capacity) {
+    public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
 
