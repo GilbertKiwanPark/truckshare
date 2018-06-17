@@ -17,6 +17,8 @@ import butterknife.OnClick;
 
 public class ReservationActivity extends AppCompatActivity {
 
+    @BindView(R.id.reservation_iv_main)
+    ImageView ivBody;
     @BindView(R.id.reservation_iv_back)
     ImageView backBtn;
     @BindView(R.id.btn_booking)
@@ -37,7 +39,8 @@ public class ReservationActivity extends AppCompatActivity {
                 "<font color='#8a000000'>If you click [YES], your reservation and payment will proceed.</font>"));
         builder.setPositiveButton(Html.fromHtml("<font color='#009688'>Yes</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int arg1) {
-
+                btnBooking.setVisibility(View.GONE);
+                ivBody.setImageResource(R.drawable.booking_page_detail);
             }
         });
         builder.setNegativeButton(Html.fromHtml("<font color=#009688'>No</font>"), new DialogInterface.OnClickListener() {
