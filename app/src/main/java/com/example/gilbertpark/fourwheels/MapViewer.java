@@ -370,7 +370,7 @@ public class MapViewer extends NMapActivity {
             } else {
                 markerId = 6001; // disabled
             }
-            poiData.addPOIitem(Double.parseDouble(data.getLongitude()), Double.parseDouble(data.getLatitude()), data.getName(), markerId, data.getKey());
+            poiData.addPOIitem(Double.parseDouble(data.getLongitude()), Double.parseDouble(data.getLatitude()), "", markerId, data.getKey());
         }
 
         poiData.endPOIdata();
@@ -707,7 +707,7 @@ public class MapViewer extends NMapActivity {
                     }
 
                     if (countOfOverlappedItems > 1) {
-                        String text = countOfOverlappedItems + " overlapped items for " + overlayItem.getTitle();
+                      //  String text = countOfOverlappedItems + " overlapped items for " + overlayItem.getTitle();
                         //Toast.makeText(MapViewer.this, text, Toast.LENGTH_LONG).show();
                         return null;
                     }
