@@ -31,7 +31,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -59,7 +58,6 @@ import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
-import java.util.List;
 
 import Data.PcRoomData2;
 import NaverMapApi.NMapCalloutCustomOverlayView;
@@ -68,10 +66,7 @@ import Utils.BackPressExitHandler;
 import Utils.DeveloperKeyUtil;
 import Utils.LocationNameMatcher;
 import Utils.SharedPreferenceManager;
-import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Sample class for map viewer library.
@@ -137,79 +132,18 @@ public class MapViewer extends NMapActivity {
 
     int filterPartyCount = 0;
 
-    @BindView(R.id.menu_iv_map)
-    ImageView ivGotoMap;
-    @BindView(R.id.menu_iv_list)
-    ImageView ivGotoMain;
-    @BindView(R.id.menu_iv_profile)
-    ImageView ivGotoProfile;
-
-    @OnClick({R.id.menu_iv_map, R.id.menu_iv_list, R.id.menu_iv_profile})
-    public void GotoMain(View v) {
-        if (v.equals(ivGotoMap)) {
-
-        } else if (v.equals(ivGotoMain)) {
-            Log.e("gomain", pcroomMap.size() + "");
-            Intent intent = new Intent(thisActivity, HistoryActivity.class);
-            startActivity(intent);
-        } else if (v.equals(ivGotoProfile)) {
-            Intent intent = new Intent(thisActivity, CsActivity.class);
-            intent.putExtra("b4activity", thisActivity.getClass().getName());
-            startActivity(intent);
-        }
-    }
-
-    @BindViews({R.id.filter_tv_partycount_1, R.id.filter_tv_partycount_2, R.id.filter_tv_partycount_3, R.id.filter_tv_partycount_4, R.id.filter_tv_partycount_5})
-    List<TextView> partyCountList;
-
-    @OnClick({R.id.filter_tv_partycount_1, R.id.filter_tv_partycount_2, R.id.filter_tv_partycount_3, R.id.filter_tv_partycount_4, R.id.filter_tv_partycount_5})
-    public void FilterPartyCountClick(View v) {
-        for (int i = 0; i < partyCountList.size(); i++) {
-            if (v.equals(partyCountList.get(i))) {
-                partyCountList.get(i).setBackground(getResources().getDrawable(R.drawable.main_filterbox_round));
-                filterPartyCount = i + 1;
-                pref.put(pref.MY_RESERVATION_COUNT, filterPartyCount);
-                DrawPOIdataOverlay();
-            } else {
-                partyCountList.get(i).setBackground(getResources().getDrawable(R.drawable.main_filterbox_round_gray));
-            }
-        }
-    }
-
-    @BindView(R.id.pcroom_panel_at_mv_ll_root)
     public LinearLayout root;
-    @BindView(R.id.pcroom_panel_at_mv_iv_img)
-    public ImageView img;
-    @BindView(R.id.pcroom_panel_at_mv_tv_name)
-    public TextView name;
-    @BindView(R.id.pcroom_panel_at_mv_tv_viewmap)
-    public TextView tvDistance;
-    @BindView(R.id.pcroom_panel_at_mv_tv_reservation_available)
-    public TextView reservation;
-    @BindView(R.id.pcroom_panel_at_mv_tv_price)
-    public TextView price;
+//    public ImageView img;
+//    public TextView name;
+//    public TextView tvDistance;
+//    public TextView reservation;
+//    public TextView price;
+//    public TextView cpu;
+//    public TextView gpu;
 
-    @BindView(R.id.pcroom_panel_at_mv_tv_cpu)
-    public TextView cpu;
-    @BindView(R.id.pcroom_panel_at_mv_tv_gpu)
-    public TextView gpu;
-
-    TextView getLocation;
+    //TextView getLocation;
     Button btnMyLocation;
     public viewPointAsyncTask myTask;
-
-    @BindView(R.id.map_iv_setting)
-    public ImageView setting;
-
-    @OnClick({R.id.map_tv_getlocation, R.id.map_iv_setting})
-    public void OnClick(View v) {
-        if (v.equals(getLocation)) {
-
-        } else if (v.equals(setting)) {
-            Intent intent = new Intent(this, SettingActivity.class);
-            startActivity(intent);
-        }
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -219,7 +153,16 @@ public class MapViewer extends NMapActivity {
         pref = new SharedPreferenceManager(this);
         locationNameMatcher = new LocationNameMatcher();
 
-        getLocation = findViewById(R.id.map_tv_getlocation);
+
+        root = findViewById(R.id.pcroom_panel_at_mv_ll_root);
+//        img = findViewById(R.id.pcroom_panel_at_mv_iv_img);
+//        name = findViewById(R.id.pcroom_panel_at_mv_tv_name);
+//        tvDistance = findViewById(R.id.pcroom_panel_at_mv_tv_viewmap);
+//        reservation = findViewById(R.id.pcroom_panel_at_mv_tv_reservation_available);
+//        price = findViewById(R.id.pcroom_panel_at_mv_tv_price);
+//        cpu = findViewById(R.id.pcroom_panel_at_mv_tv_cpu);
+//        gpu = findViewById(R.id.pcroom_panel_at_mv_tv_gpu);
+        //getLocation = findViewById(R.id.map_tv_getlocation);
         btnMyLocation = findViewById(R.id.map_mylocation);
         btnMyLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,14 +173,8 @@ public class MapViewer extends NMapActivity {
             }
         });
 
-        filterPartyCount = pref.getValue(pref.MY_RESERVATION_COUNT, 0);
-        try {
-            partyCountList.get(filterPartyCount - 1).setBackground(getResources().getDrawable(R.drawable.main_filterbox_round));
-        } catch (Exception e) {
-        }
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        getLocation.setText(pref.getValue(SharedPreferenceManager.MY_DONG, "찾는중"));
+        //getLocation.setText(pref.getValue(SharedPreferenceManager.MY_DONG, "찾는중"));
         siName = pref.getValue(SharedPreferenceManager.MY_GU, "");
         doName = pref.getValue(SharedPreferenceManager.MY_DO, "");
 
@@ -248,7 +185,7 @@ public class MapViewer extends NMapActivity {
                 TypedValue.COMPLEX_UNIT_DIP, 200,
                 getResources().getDisplayMetrics()
         );
-//        root.animate().translationY(distance).setDuration(10).start();
+        root.animate().translationY(distance).setDuration(10).start();
 
         nMapActivity = MapViewer.this;
         // set a registered Client Id for Open MapViewer Library
@@ -492,12 +429,12 @@ public class MapViewer extends NMapActivity {
             if (placeMark.dongName.equals(null) || placeMark.dongName.equals("")) {
 
             } else {
-                pref.put(SharedPreferenceManager.THIS_DO, placeMark.doName);
-                pref.put(SharedPreferenceManager.THIS_GU, placeMark.siName);
-                pref.put(SharedPreferenceManager.THIS_DONG, placeMark.dongName);
+                pref.put(SharedPreferenceManager.MY_DO, placeMark.doName);
+                pref.put(SharedPreferenceManager.MY_GU, placeMark.siName);
+                pref.put(SharedPreferenceManager.MY_DONG, placeMark.dongName);
                 setPcroomData(placeMark.doName, placeMark.siName);
             }
-            getLocation.setText(pref.getValue(SharedPreferenceManager.MY_DONG, "찾는중"));
+            //getLocation.setText(pref.getValue(SharedPreferenceManager.MY_DONG, "찾는중"));
         }
     };
 
@@ -519,12 +456,12 @@ public class MapViewer extends NMapActivity {
         public void onLocationUpdateTimeout(NMapLocationManager locationManager) {
 
             // stop location updating
-            //			Runnable runnable = new Runnable() {
-            //				public void run() {
-            //					stopMyLocation();
-            //				}
-            //			};
-            //			runnable.run();
+            //       Runnable runnable = new Runnable() {
+            //          public void run() {
+            //             stopMyLocation();
+            //          }
+            //       };
+            //       runnable.run();
 
             //Toast.makeText(MapViewer.this, "Your current location is temporarily unavailable.", Toast.LENGTH_LONG).show();
         }
@@ -662,6 +599,7 @@ public class MapViewer extends NMapActivity {
                     if (data.getKey().equals(item.getTag())) {
                         setOverlayView(data);
                         root.setVisibility(View.VISIBLE);
+                        btnMyLocation.setVisibility(View.GONE);
                         if (!showDetail) {
                             float distance = TypedValue.applyDimension(
                                     TypedValue.COMPLEX_UNIT_DIP, 0,
@@ -680,6 +618,7 @@ public class MapViewer extends NMapActivity {
                             getResources().getDisplayMetrics()
                     );
                     root.animate().translationY(distance).setDuration(700).start();
+                    btnMyLocation.setVisibility(View.VISIBLE);
                     showDetail = !showDetail;
                 }
 
@@ -690,14 +629,14 @@ public class MapViewer extends NMapActivity {
 
     private void setOverlayView(final PcRoomData2 data) {
 
-        Picasso.get().load(data.getPhoto_list().get(0)).into(img);
-        price.setText("시간당 " + data.getMembership_pay() + "원(회원가)");
-        cpu.setText("CPU " + data.getCpu());
-        gpu.setText("GPU " + data.getGpu());
+//        Picasso.get().load(data.getPhoto_list().get(0)).into(img);
+//        price.setText("시간당 " + data.getMembership_pay() + "원(회원가)");
+//        cpu.setText("CPU " + data.getCpu());
+//        gpu.setText("GPU " + data.getGpu());
 
         //NGeoPoint thisPoint = new NGeoPoint(Double.parseDouble(data.getLongitude()), Double.parseDouble(data.getLatitude()));
         //double distance = (Math.round(((myPoint.getDistance(myPoint, thisPoint)) + 90) / 100));
-        tvDistance.setText(data.getDistance() + "km");
+        //tvDistance.setText(data.getDistance() + "km");
 
 //        try {
 //            float averageRb = 0.0f;
@@ -712,16 +651,12 @@ public class MapViewer extends NMapActivity {
 //            rb.setRating(0.0f);
 //            reviewCount.setText("(후기 없음)");
 //        }
-        name.setText(data.getName());
-        reservation.setText("(" + data.getReservation_count() + "인 가능)");
+        //name.setText(data.getName());
+        //reservation.setText("(" + data.getReservation_count() + "인 가능)");
         root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MapViewer.this, HistoryActivity.class);
-                intent.putExtra("pcRoomKey", data.getKey());
-                intent.putExtra("do", data.getJuso_do());
-                intent.putExtra("si", data.getJuso_si());
-                intent.putExtra("b4activity", thisActivity.getClass().getName());
+                Intent intent = new Intent(MapViewer.this, ReservationActivity.class);
                 startActivity(intent);
             }
         });
@@ -976,3 +911,4 @@ public class MapViewer extends NMapActivity {
         }
     }
 }
+

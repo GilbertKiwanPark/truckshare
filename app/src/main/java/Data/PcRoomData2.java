@@ -57,10 +57,9 @@ public class PcRoomData2 {
     String reservation_count;
     double distance = 0;
     boolean bool_alliance;
-    HashMap<String, ReviewData> review_map = new HashMap<>();
 
     public PcRoomData2(){}
-    public PcRoomData2(String name, String juso_do, String juso_si, String juso_eup, String juso_dong, String juso_number, String juso_new, String latitude, String longitude, String tel_number, String favor_game, boolean bool_favor_game, String cpu, String gpu, String ram, boolean bool_ssd, String paid_game_pay, ArrayList<String> paid_game_list, String monitor, String keyboard, String mouse, boolean bool_headphone, boolean bool_wordprocess_ms, boolean bool_wordprocess_hansoft, String phone_charge, String printer, boolean bool_scanner, boolean bool_parking, boolean bool_tv, ArrayList<String> foodname_list, ArrayList<String> foodimgurl_list, String speeker, ArrayList<String> photo_list, ArrayList<String> pay_policy, boolean bool_card_pay, String seats_number, boolean bool_couple_seat, boolean bool_wifi, String membership_pay, boolean bool_discount, ArrayList<String> discount_list, boolean bool_in_toilet, boolean bool_smoke_room, String facilities, boolean bool_reservation, String reservation_count, boolean bool_alliance, HashMap<String, ReviewData> review_map) {
+    public PcRoomData2(String name, String juso_do, String juso_si, String juso_eup, String juso_dong, String juso_number, String juso_new, String latitude, String longitude, String tel_number, String favor_game, boolean bool_favor_game, String cpu, String gpu, String ram, boolean bool_ssd, String paid_game_pay, ArrayList<String> paid_game_list, String monitor, String keyboard, String mouse, boolean bool_headphone, boolean bool_wordprocess_ms, boolean bool_wordprocess_hansoft, String phone_charge, String printer, boolean bool_scanner, boolean bool_parking, boolean bool_tv, ArrayList<String> foodname_list, ArrayList<String> foodimgurl_list, String speeker, ArrayList<String> photo_list, ArrayList<String> pay_policy, boolean bool_card_pay, String seats_number, boolean bool_couple_seat, boolean bool_wifi, String membership_pay, boolean bool_discount, ArrayList<String> discount_list, boolean bool_in_toilet, boolean bool_smoke_room, String facilities, boolean bool_reservation, String reservation_count, boolean bool_alliance) {
         this.name = name;
         this.juso_do = juso_do;
         this.juso_si = juso_si;
@@ -108,7 +107,6 @@ public class PcRoomData2 {
         this.bool_reservation = bool_reservation;
         this.reservation_count = reservation_count;
         this.bool_alliance = bool_alliance;
-        this.review_map = review_map;
     }
 
     public boolean isBool_alliance() {
@@ -502,31 +500,4 @@ public class PcRoomData2 {
     public void setReservation_count(String reservation_count) {
         this.reservation_count = reservation_count;
     }
-
-    public HashMap<String, ReviewData> getReview_map() {
-        return review_map;
-    }
-
-    public void setReview_map(HashMap<String, ReviewData> review_map) {
-        this.review_map = review_map;
-    }
-
-    public void addReview(String key, ReviewData data) {
-        try{
-            this.review_map.put(key, data);
-        } catch (Exception e) {
-            this.review_map = new HashMap<>();
-            this.review_map.put(key, data);
-        }
-    }
-
-    public void addReview(ReviewData data) {
-        try{
-            this.review_map.put(data.getKey(), data);
-        } catch (Exception e) {
-            this.review_map = new HashMap<>();
-            this.review_map.put(data.getKey(), data);
-        }
-    }
-
 }

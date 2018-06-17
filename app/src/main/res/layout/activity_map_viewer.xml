@@ -7,38 +7,53 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
+        android:layout_height="44dp"
+        android:background="@drawable/search_bar_bg"
+        android:orientation="horizontal"
+        android:weightSum="360">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="8" />
 
-        <TextView
-            android:id="@+id/map_tv_getlocation"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:drawableLeft="@mipmap/ic_add_location_white_24dp"
-            android:gravity="center"
-            android:paddingRight="10dp"
-            android:text="찾는중"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            />
-
-        <ImageView
-            android:id="@+id/map_iv_setting"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:src="@mipmap/menu_icon_filter"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:scaleType="fitCenter"
-            />
+            android:layout_margin="7dp"
+            android:layout_weight="296"
+            android:background="@drawable/search_location_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/icons_search" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:background="@null" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/icons_search_clear" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="56"
+            android:padding="8dp"
+            android:src="@drawable/icons_filter" />
     </LinearLayout>
 
     <FrameLayout
@@ -46,21 +61,95 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="48dp"
+            android:background="@color/mainGray"/>
+
         <com.nhn.android.maps.NMapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Hello World"/>
+            android:text="Hello World" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:background="#ffffff">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="05:10 pm"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textSize="28sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="SUN  06/17"
+                    android:gravity="center"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/mainGray"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="10:10 pm"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="28sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="SUN  06/17"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/map_mylocation"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="top|left"
-            android:layout_marginTop="65dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/mylocation_btn_unchecked"
-            />
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:background="@drawable/mylocation_btn_unchecked" />
 
 
         <LinearLayout
@@ -69,232 +158,33 @@
             android:layout_height="200dp"
             android:layout_gravity="bottom"
             android:orientation="vertical"
+            android:background="@drawable/search_page_detail"
             android:visibility="gone">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#3000">
-
-                <ImageView
-                    android:id="@+id/pcroom_panel_at_mv_iv_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@mipmap/dummy_pcroom1"/>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#77000000"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/pcroom_panel_at_mv_tv_viewmap"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/ic_add_location_white_24dp"
-                        android:text=""
-                        android:textColor="#fff"
-                        android:textSize="15sp"
-                        android:textStyle="bold"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/pcroom_panel_at_mv_tv_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="라이온피시방"
-                                android:textColor="#fff"
-                                android:textSize="20sp"
-                                android:textStyle="bold"
-                                />
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <RatingBar
-                                    android:id="@+id/pcroom_panel_at_mv_rb"
-                                    style="?android:attr/ratingBarStyleSmall"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="left"
-                                    android:isIndicator="true"
-                                    android:max="5"
-                                    android:rating="2.5"/>
-
-                                <TextView
-                                    android:id="@+id/pcroom_panel_at_mv_tv_review_count"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="#fff"
-                                    android:textStyle="bold"
-                                    android:text="(후기 15)"/>
-                            </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/pcroom_panel_at_mv_tv_reservation_available"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="(3인 가능)"
-                                android:textColor="#fff"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                />
-
-                            <TextView
-                                android:id="@+id/pcroom_panel_at_mv_tv_price"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="시간당 1200원"
-                                android:textColor="#fff"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/pcroom_panel_at_mv_tv_cpu"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="CPU 7세대 i7-K"
-                                android:textColor="#fff"
-                                android:textSize="15sp"/>
-
-                            <TextView
-                                android:id="@+id/pcroom_panel_at_mv_tv_gpu"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="GPU GTX 1070"
-                                android:textColor="#fff"
-                                android:textSize="15sp"/>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
-            </FrameLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="vertical"
-            android:background="#ccffffff"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="5">
-
-                <TextView
-                    android:id="@+id/filter_tv_partycount_1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/main_filterbox_round_gray"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:text="1명 좌석"/>
-
-                <TextView
-                    android:id="@+id/filter_tv_partycount_2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/main_filterbox_round_gray"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:text="2명 좌석"/>
-
-                <TextView
-                    android:id="@+id/filter_tv_partycount_3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/main_filterbox_round_gray"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:text="3명 좌석"/>
-
-                <TextView
-                    android:id="@+id/filter_tv_partycount_4"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/main_filterbox_round_gray"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:text="4명 좌석"/>
-
-                <TextView
-                    android:id="@+id/filter_tv_partycount_5"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/main_filterbox_round_gray"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:text="5명 좌석"/>
-
-
-            </LinearLayout>
 
         </LinearLayout>
 
     </FrameLayout>
+
     <LinearLayout style="@style/bottom_main_menu_ll">
-        <ImageView android:id="@+id/menu_iv_map" style="@style/bottom_main_menu_icon" android:src="@mipmap/menu_icon_map_black" />
-        <ImageView android:id="@+id/menu_iv_list" style="@style/bottom_main_menu_icon" android:src="@mipmap/menu_icon_list_gray" />
-        <ImageView android:id="@+id/menu_iv_profile" style="@style/bottom_main_menu_icon" android:src="@mipmap/menu_icon_profile_gray" />
+
+        <ImageView
+            android:id="@+id/menu_iv_1"
+            style="@style/bottom_main_menu_icon"
+            android:src="@drawable/tabs_search_tab_act" />
+
+        <ImageView
+            android:id="@+id/menu_iv_2"
+            style="@style/bottom_main_menu_icon"
+            android:src="@drawable/tabs_bookings_tab_deact_2" />
+
+        <ImageView
+            android:id="@+id/menu_iv_3"
+            style="@style/bottom_main_menu_icon"
+            android:src="@drawable/tabs_help_deact_2" />
+
+        <ImageView
+            android:id="@+id/menu_iv_4"
+            style="@style/bottom_main_menu_icon"
+            android:src="@drawable/tabs_my_page_deact_2" />
     </LinearLayout>
 </LinearLayout>

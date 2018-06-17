@@ -23,20 +23,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoadingActivity">
+        <activity
+            android:name=".LoadingActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".MapViewer"
+            android:configChanges="keyboardHidden|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MapViewer"
-            android:configChanges="keyboardHidden|orientation" />
         <activity android:name=".HistoryActivity" />
-        <activity android:name=".MyPageActivity" />
         <activity android:name=".CsActivity" />
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".FacebookJoinActivity" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".ReservationActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>

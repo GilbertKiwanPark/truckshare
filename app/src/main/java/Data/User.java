@@ -13,19 +13,8 @@ public class User {
     String deviceId;
     String joinDate;
     String code;
-    HashMap<String, ReviewData> review_map = new HashMap<>();
 
     public User(){};
-
-    public User(String uid, String id, String mileage, String deviceId, String joinDate, String code, HashMap<String, ReviewData> review_map) {
-        this.uid = uid;
-        this.id = id;
-        this.mileage = mileage;
-        this.deviceId = deviceId;
-        this.joinDate = joinDate;
-        this.code = code;
-        this.review_map = review_map;
-    }
 
     public User(String uid, String id, String mileage, String deviceId, String joinDate, String code) {
         this.uid = uid;
@@ -82,31 +71,5 @@ public class User {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public HashMap<String, ReviewData> getReview_map() {
-        return review_map;
-    }
-
-    public void setReview_map(HashMap<String, ReviewData> review_map) {
-        this.review_map = review_map;
-    }
-
-    public void addReviewMap(String key, ReviewData data) {
-        try {
-            review_map.put(key, data);
-        }catch (Exception e) {
-            review_map = new HashMap<>();
-            review_map.put(key, data);
-        }
-    }
-
-    public void addReviewMap(ReviewData data) {
-        try {
-            review_map.put(data.getKey(), data);
-        }catch (Exception e) {
-            review_map = new HashMap<>();
-            review_map.put(data.getKey(), data);
-        }
     }
 }

@@ -5,13 +5,13 @@
         <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
             <item>
                 <shape>
-                    <solid android:color="#fff"/>
-                    <corners android:radius="10dp"/>
+                    <solid android:color="@color/colorPrimary"/>
+                    <corners android:radius="30dp"/>
                 </shape>
             </item>
             <item
                 android:bottom="5dp"
-                android:drawable="@mipmap/ic_my_location_black_48dp"
+                android:drawable="@mipmap/ic_my_location_white_48dp"
                 android:left="5dp"
                 android:right="5dp"
                 android:top="5dp"/>
@@ -22,8 +22,8 @@
         <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
             <item>
                 <shape>
-                    <solid android:color="@color/colorPrimary"/>
-                    <corners android:radius="10dp"/>
+                    <solid android:color="#ffffff"/>
+                    <corners android:radius="30dp"/>
                 </shape>
             </item>
             <item
@@ -32,7 +32,7 @@
                 android:right="5dp"
                 android:bottom="5dp"
 
-                android:drawable="@mipmap/ic_my_location_white_48dp"/>
+                android:drawable="@mipmap/ic_my_location_black_48dp"/>
         </layer-list>
     </item>
 

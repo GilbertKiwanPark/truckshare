@@ -20,10 +20,8 @@ public class CsActivity extends AppCompatActivity {
     ImageView ivGotoMyPage;
     @BindView(R.id.menu_iv_4)
     ImageView ivGotoCs;
-    @BindView(R.id.menu_iv_5)
-    ImageView ivGotoSetting;
 
-    @OnClick({R.id.menu_iv_1, R.id.menu_iv_2, R.id.menu_iv_3, R.id.menu_iv_4, R.id.menu_iv_5})
+    @OnClick({R.id.menu_iv_1, R.id.menu_iv_2, R.id.menu_iv_3, R.id.menu_iv_4})
     public void OnClickMenu(View v) {
         if (v.equals(ivGotoMain)) {
             Intent intent = new Intent(CsActivity.this, MapViewer.class);
@@ -39,10 +37,6 @@ public class CsActivity extends AppCompatActivity {
             finish();
         } else if (v.equals(ivGotoCs)) {
 
-        } else if (v.equals(ivGotoSetting)) {
-            Intent intent = new Intent(CsActivity.this, SettingActivity.class);
-            startActivity(intent);
-            finish();
         }
     }
 

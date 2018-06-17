@@ -18,10 +18,6 @@ public class SharedPreferenceManager {
     public final static String MY_GU = "MY_GU";
     public final static String MY_DONG = "MY_DONG";
 
-    public final static String THIS_DO = "THIS_DO";
-    public final static String THIS_GU = "THIS_GU";
-    public final static String THIS_DONG = "THIS_DONG";
-
     public final static String MY_MAPCOUNT = "MY_MAPCOUNT";
     public final static String MY_MAP_INTERVAL = "MY_MAP_INTERVAL";
 
