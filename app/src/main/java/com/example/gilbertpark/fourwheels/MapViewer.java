@@ -123,6 +123,8 @@ public class MapViewer extends NMapActivity {
     private NMapPOIdataOverlay mFloatingPOIdataOverlay;
     private NMapPOIitem mFloatingPOIitem;
 
+    private ImageView ivFilter;
+
     private static boolean USE_XML_LAYOUT = true;
 
     /**
@@ -163,6 +165,14 @@ public class MapViewer extends NMapActivity {
 //        cpu = findViewById(R.id.pcroom_panel_at_mv_tv_cpu);
 //        gpu = findViewById(R.id.pcroom_panel_at_mv_tv_gpu);
         //getLocation = findViewById(R.id.map_tv_getlocation);
+        ivFilter = findViewById(R.id.mapview_iv_filter);
+        ivFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapViewer.this, FilterActivity.class);
+                startActivity(intent);
+            }
+        });
         btnMyLocation = findViewById(R.id.map_mylocation);
         btnMyLocation.setOnClickListener(new View.OnClickListener() {
             @Override

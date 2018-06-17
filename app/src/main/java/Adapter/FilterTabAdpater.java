@@ -76,11 +76,13 @@ public class FilterTabAdpater extends RecyclerView.Adapter<FilterTabAdpater.View
                     for (int i = 0; i < parentList.size(); i++) {
                         if (parentList.get(i).equals(datas.get(getAdapterPosition()))) {
                             parentList.remove(i);
+                            ((FilterActivity)context).setCarRv(parentList);
                             return;
                         }
                     }
                 } else {
                     parentList.add(datas.get(getAdapterPosition()));
+                    ((FilterActivity)context).setCarRv(parentList);
                 }
                 notifyDataSetChanged();
             }

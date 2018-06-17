@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import Adapter.FilterCarAdpater;
 import Adapter.FilterTabAdpater;
@@ -26,6 +28,15 @@ public class FilterActivity extends AppCompatActivity {
     RecyclerView itemRv;
     @BindView(R.id.filter_truck_rv)
     RecyclerView carRv;
+    @BindView(R.id.filer_iv_next)
+    ImageView next;
+
+    @OnClick(R.id.filer_iv_next)
+    public void OnNext(View v) {
+        if(v.equals(next)) {
+            finish();
+        }
+    }
 
     @OnClick({R.id.filter_tab_1, R.id.filter_tab_2})
     public void OnClickTab(View v) {
@@ -42,7 +53,8 @@ public class FilterActivity extends AppCompatActivity {
 
     ArrayList<String> capacityList = new ArrayList<>();
     ArrayList<String> typeList = new ArrayList<>();
-    ArrayList<CarData> cardata = new ArrayList<>();
+    ArrayList<CarData> orgCardata = new ArrayList<>();
+    ArrayList<CarData> carData = new ArrayList<>();
 
     public ArrayList<String> setList = new ArrayList<>();
 
@@ -69,81 +81,74 @@ public class FilterActivity extends AppCompatActivity {
         typeList.add("플러스 축차 카고");
         typeList.add("플러스 축차 탑차 윙바디");
 
-        cardata.add(new CarData("1.4t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("2.5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("3.5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("11t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("25t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/25ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
-        cardata.add(new CarData("1.4t", "포드", "일반카고 , ", "https://fireb29asestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
-        cardata.add(new CarData("2.5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("3.5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("11t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("25t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "포드", "플러스 축차 탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "포드", "플러스 축차 카고 ,", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("18t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("18t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1.4t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("2.5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("3.5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("11t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("25t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/25ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
-        cardata.add(new CarData("1.4t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
-        cardata.add(new CarData("2.5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("18t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("3.5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("11t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("25t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "포드", "플러스 축차 탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "포드", "플러스 축차 카고 ,", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("18t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("18t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1.4t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("2.5t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("3.5t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("11t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("25t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/25ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
-        cardata.add(new CarData("1.4t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
-        cardata.add(new CarData("2.5t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("3.5t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("11t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("25t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "현대", "플러스 축차 탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "현대", "플러스 축차 카고 ,", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("18t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("18t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1.4t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("2.5t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("3.5t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("11t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("25t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/25ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("1t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
-        cardata.add(new CarData("1.4t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
-        cardata.add(new CarData("2.5t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("3.5t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("11t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("25t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "도요타", "플러스 축차 탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("5t", "도요타", "플러스 축차 카고 ,", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
-        cardata.add(new CarData("18t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1.4t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("2.5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("25t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/25ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
+        orgCardata.add(new CarData("2.5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("25t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "포드", "플러스 축차 카고 ,", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("18t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("18t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1.4t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("2.5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("3.5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("11t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("25t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/25ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
+        orgCardata.add(new CarData("1.4t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
+        orgCardata.add(new CarData("2.5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("18t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("3.5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("11t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("25t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "포드", "플러스 축차 탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "포드", "플러스 축차 카고 ,", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("18t", "포드", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("18t", "포드", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1.4t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("2.5t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("3.5t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("11t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("25t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/25ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
+        orgCardata.add(new CarData("1.4t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
+        orgCardata.add(new CarData("2.5t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("3.5t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("11t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("25t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "현대", "플러스 축차 탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "현대", "플러스 축차 카고 ,", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("18t", "현대", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("18t", "현대", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1.4t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("2.5t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("3.5t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("11t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("25t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/25ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("1t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
+        orgCardata.add(new CarData("1.4t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/1ton%20topwingtop.png?alt=media"));
+        orgCardata.add(new CarData("2.5t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("3.5t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("11t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("25t", "도요타", "일반카고 , ", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "도요타", "플러스 축차 탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/3.5ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("5t", "도요타", "플러스 축차 카고 ,", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/11ton%20cargo.png?alt=media"));
+        orgCardata.add(new CarData("18t", "도요타", "탑차 윙바디", "https://firebasestorage.googleapis.com/v0/b/wheels-7fa40.appspot.com/o/18ton%20cargo.png?alt=media"));
 
         setTabRv(capacityList);
-        setCarRv();
+        setCarRv(null);
     }
 
     private void setTabRv(ArrayList<String> list) {
@@ -159,11 +164,28 @@ public class FilterActivity extends AppCompatActivity {
         tabAdapter.notifyDataSetChanged();
     }
 
-    private void setCarRv() {
+    public void setCarRv(ArrayList<String> list) {
+
+        if (list == null) {
+            carData = orgCardata;
+        } else {
+            carData = new ArrayList<>();
+            for (CarData data : orgCardata) {
+                if (list.contains(data.getCapacity()) || list.contains(data.getCar_type())) {
+                    carData.add(data);
+                }
+            }
+        }
+
         RecyclerView.LayoutManager lm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        itemRv.setLayoutManager(lm);
-        carAdapter = new FilterCarAdpater(this, cardata);
-        itemRv.setAdapter(carAdapter);
+        carRv.setLayoutManager(lm);
+        carAdapter = new FilterCarAdpater(this, carData);
+        carRv.setAdapter(carAdapter);
         carAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

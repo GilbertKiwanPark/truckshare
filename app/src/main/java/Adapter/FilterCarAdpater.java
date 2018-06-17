@@ -41,12 +41,7 @@ public class FilterCarAdpater extends RecyclerView.Adapter<FilterCarAdpater.View
     @Override
     public void onBindViewHolder(@NonNull FilterCarAdpater.ViewHolder holder, int position) {
         final CarData data = datas.get(position);
-
-        if(parentList.contains(data.getCapacity()) && parentList.contains(data.getCar_type())) {
-            Picasso.get().load(data.getImg_url()).into(holder.carImage);
-        } else {
-            holder.carImage.setImageResource(0);
-        }
+        Picasso.get().load(data.getImg_url()).into(holder.carImage);
     }
 
     @Override

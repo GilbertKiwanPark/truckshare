@@ -38,7 +38,9 @@
         <activity android:name=".HistoryActivity" />
         <activity
             android:name=".FilterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        </activity>
         <activity android:name=".CsActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".LoginActivity" />
